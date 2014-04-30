@@ -1,4 +1,4 @@
-package noppes.death;
+package noppes.drophalf;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,17 +15,18 @@ public class PlayerListener implements Listener {
 
 	@EventHandler
 	public void onDeath(PlayerDeathEvent event) {
-		if(event.getDrops().size() <= 1 || !event.getEntity().hasPermission("death.drop-half"))
+		if(event.getDrops().size() <= 1 || !event.getEntity().hasPermission("noppes.drophalf"))
 			return;
 		Player player = event.getEntity();
 		List<ItemStack> list = new ArrayList<ItemStack>(event.getDrops());
 		Collections.shuffle(list);
 		
+		
 		list = list.subList(0, list.size() / 2);
 		for(ItemStack item : list){
 			event.getDrops().remove(item);
 		}
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Death.instance, new PlayerGiveBack(player, list));
+		Bukkit.getScheduler().scheduleSyncDelayedTask(DropHalf.instance, new PlayerGiveBack(player, list));
 	}
 
 }

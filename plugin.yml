@@ -1,12 +1,8 @@
-name: Death
-main: noppes.death.Death
+name: DropHalf
+main: noppes.drophalf.DropHalf
 version: 1
 load: STARTUP
 permissions:
-  death.*:
-    description: Gives access to all death permissions
-    children:
-      death.drop-half: true
-  death.drop-half:
+  noppes.drophalf:
     description: Drop half your inventory on death
     default: false
